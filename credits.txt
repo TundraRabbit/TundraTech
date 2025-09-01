@@ -1,0 +1,4 @@
+
+* simple mechanism texture by foxbearfilms
+
+* Original textures were modified to better fit the materials used in crafting
