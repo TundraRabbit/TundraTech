@@ -78,6 +78,14 @@ ServerEvents.recipes(event => {
         H: tool + 'hammers'
     })
 
+    event.shaped('3x gtceu:treated_wood_planks', [
+        ' A ',
+        'BBB'
+    ], {
+        A: 'gtceu:creosote_bucket',
+        B: '#minecraft:planks'
+    })
+
     event.shaped('create:basin', [
         'A A',
         'BAB'
@@ -195,7 +203,7 @@ ServerEvents.recipes(event => {
         "recipeTier": 0,
         "ingredients": [
             { "tag": "minecraft:planks" },
-            { "fluid": "gtceu:creosote", "amount": 250 }
+            { "fluid": "gtceu:creosote", "amount": 125 }
         ],
         "results": [{ "item": "gtceu:treated_wood_planks" }]
     })
