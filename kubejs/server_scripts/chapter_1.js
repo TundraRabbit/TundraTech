@@ -32,7 +32,8 @@ ServerEvents.recipes(event => {
     event.remove({output:   'createaddition:rolling_mill'})
     event.remove({output:   'greate:andesite_alloy_mechanical_press'})
     event.remove({output:   '#' + id + 'unused' })
-
+    event.remove({output:   'create:basin'})
+    event.remove({output:   'vintageimprovements:centrifuge'})
     event.remove({id: 'gtceu:shaped/wrought_iron_alloy'})
     event.remove({id: 'gtceu:shapeless/dust_brass'})
     event.remove({output: 'greate:andesite_alloy_mechanical_mixer'})
@@ -77,13 +78,34 @@ ServerEvents.recipes(event => {
         H: tool + 'hammers'
     })
 
+    event.shaped('create:basin', [
+        'A A',
+        'BAB'
+    ], {
+        A: '#forge:plates/iron',
+        B: 'create:andesite_alloy'
+    })
+
+    event.shaped('vintageimprovements:centrifuge', [
+        'ABA',
+        'ACA',
+        'HDS'
+    ], {
+        A: 'gtceu:treated_wood_normal_fluid_pipe',
+        B: '#forge:shafts',
+        C: 'gtceu:treated_wood_frame',
+        D: 'create:andesite_casing',
+        H: tool + 'hammers',
+        S: tool + 'saws'
+    })
+
     event.recipes.gtceu.shaped('createaddition:rolling_mill', [
         'ABA',
         'CBC',
         'VDW'
     ], {
         A: 'gtceu:andesite_alloy_plate',
-        B: '#forge:shafts',
+        B: 'gtceu:andesite_alloy_shaft',
         C: 'gtceu:andesite_alloy_screw',
         D: 'create:andesite_casing',
         V: tool + 'screwdrivers',
@@ -91,13 +113,12 @@ ServerEvents.recipes(event => {
     }).addMaterialInfo()
 
     event.recipes.gtceu.shaped('greate:andesite_alloy_mechanical_press', [
-        'ABA',
+        ' B ',
         'CDC',
         'HEV'
     ], {
-        A: 'gtceu:andesite_alloy_screw',
-        B: '#forge:shafts',
-        C: id + 'simple_mechanism',
+        C: 'gtceu:andesite_alloy_screw',
+        B: 'gtceu:andesite_alloy_shaft',
         D: 'create:andesite_casing',
         E: 'create:andesite_alloy_block',
         H: tool + 'hammers',
@@ -126,7 +147,7 @@ ServerEvents.recipes(event => {
         B: id + 'simple_mechanism',
         C: 'create:andesite_casing',
         D: 'create:andesite_alloy',
-        E: '#forge:shafts',
+        E: 'gtceu:andesite_alloy_shaft',
         H: tool + 'hammers',
         W: tool + 'wrenches'
     })
