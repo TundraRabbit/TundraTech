@@ -5,7 +5,6 @@
 console.info('Chapter 1 scripts loading...')
 
 let id = "tundratech:"
-//let materials = []
 
 ServerEvents.recipes(event => {
 
@@ -13,6 +12,8 @@ ServerEvents.recipes(event => {
     const $GTCEuAPI = Java.loadClass('com.gregtechceu.gtceu.api.GTCEuAPI')
     const $MATERIAL_FLAG = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag')
     const $PROPERTY_KEY = Java.loadClass('com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey')
+
+    const ice = ['minecraft:ice', 'minecraft:packed_ice', 'minecraft:blue_ice']
 
     /*
     $GTCEuAPI.materialManager.getRegistries().forEach(registry => { //get material registries from GTCEu API
@@ -47,6 +48,16 @@ ServerEvents.recipes(event => {
     //Crafting - Shapeless
     event.shapeless(Item.of('gtceu:andesite_alloy_dust'), ['2x gtceu:andesite_dust', 'gtceu:small_iron_dust'])
     event.shapeless(Item.of('gtceu:andesite_dust'), ['#forge:tools/mortars', 'minecraft:andesite'])
+
+    event.recipes.vintageimprovements.vacuumizing([Fluid.of('gtceu:steam', 5)], Fluid.water(5))
+    .secondaryFluidOutput(0)
+    .processingTime(1)
+    .heated()
+    ice.forEach(ice => {
+        event.recipes.vintageimprovements.pressurizing([Fluid.of('gtceu:distilled_water', 20), Item.of(ice)], [Fluid.of('gtceu:steam', 25), Item.of(ice)])
+        .secondaryFluidInput(0)
+        .processingTime(25)
+    })
 
     //Crafting - Shaped
     /*
