@@ -9,6 +9,10 @@ ServerEvents.tags('item', event => {
     event.add('forge:plates/zinc', 'createdeco:zinc_sheet')
     event.add('forge:plates/netherite', 'createdeco:netherite_sheet')
     event.add('forge:plates/wrought_iron', 'createdeco:industrial_iron_sheet')
+    event.add('forge:stripped_logs', 'gtceu:stripped_rubber_log')
+
+    event.add( id + 'quartz', 'forge:gems/certus_quartz')
+    event.add( id + 'quartz', 'forge:gems/quartz')
 
     let cna = 'create_new_age:'
     //event.add(id + 'unused', cna + 'heater')
